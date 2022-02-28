@@ -1,0 +1,106 @@
+package com.bryancfz.wishlist.apirest.models.entity;
+
+
+
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties; 
+
+
+
+/**
+ * https://www.baeldung.com/jpa-joincolumn-vs-mappedby
+ * https://www.baeldung.com/jpa-join-column
+* @author BryanCFz
+*
+*/
+@Entity
+@Table(name = "cliente")
+public class Cliente implements Serializable {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_cliente")
+	private Long id;
+	
+	@Column(nullable = false)
+	private String nombre;
+	
+	
+
+	// 1 Cliente --> * Cuenta
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente")
+//	@JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
+	@Column(nullable = false)
+	private List<Cuenta> cuentas;
+    ////////////////////////////////////////////////////////////	
+	
+	
+	// 1 Cliente --> * lista_deseos
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cliente" )
+//	@JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
+	@Column(nullable = false, name = "deseos")
+	private List<ListaDeseos> deseos;
+	
+	
+	
+	/*Constructors*/
+	public Cliente(Long id, String nombre) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+	}
+	
+	public Cliente() {
+		super();
+	}
+	
+
+	
+	/* SETTERS AND GETTERS */
+	public Long getId() {
+		return id;
+	}	
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	
+	/*Relacion*/
+//	public List<Cuenta> getCuentas() {
+//		return cuentas;
+//	}
+//
+//
+//	public void setIdCuenta(List<Cuenta> cuentas) {
+//		this.cuentas = cuentas;
+//	}
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+}

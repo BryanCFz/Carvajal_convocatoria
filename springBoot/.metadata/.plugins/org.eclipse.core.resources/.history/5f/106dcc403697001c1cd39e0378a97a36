@@ -1,0 +1,22 @@
+package com.bryancfz.wishlist.apirest.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.bryancfz.wishlist.apirest.dao.IProductoDao;
+import com.bryancfz.wishlist.apirest.entity.Producto;
+
+public class ProductoServiceImpl implements IProductoService {
+	
+	@Autowired
+	public IProductoDao productoDao;
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Producto> findAll_() {
+		return  (List<Producto>) productoDao.findAll();
+	}
+
+}

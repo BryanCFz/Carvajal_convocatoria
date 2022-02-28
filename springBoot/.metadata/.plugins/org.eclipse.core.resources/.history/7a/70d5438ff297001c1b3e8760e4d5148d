@@ -1,0 +1,25 @@
+package com.bryancfz.wishlist.apirest.models.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.bryancfz.wishlist.apirest.models.dao.IListaDeseosDao;
+import com.bryancfz.wishlist.apirest.models.entity.ListaDeseos;
+
+
+@Service
+public class ListaDeseoServiceImpl implements IListaDeseoService{
+
+	@Autowired
+	public IListaDeseosDao listaDeseosDao;
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<ListaDeseos> findAll_() {
+		return  (List<ListaDeseos>) listaDeseosDao.findAll();
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.bryancfz.wishlist.apirest.services;
+
+public interface IProductoService {
+
+}

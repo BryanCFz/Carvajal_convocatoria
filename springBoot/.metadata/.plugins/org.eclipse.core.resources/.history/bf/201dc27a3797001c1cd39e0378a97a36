@@ -1,0 +1,5 @@
+package com.bryancfz.wishlist.apirest.controllers.dto;
+
+public class ErrorResponseController {
+
+}

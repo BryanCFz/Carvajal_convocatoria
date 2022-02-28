@@ -1,0 +1,5 @@
+package com.bryancfz.wishlist.apirest.models.dao;
+
+public interface ICuentaDao {
+
+}

@@ -1,0 +1,9 @@
+package com.bryancfz.wishlist.apirest.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.bryancfz.wishlist.apirest.entity.Producto;
+
+public interface IProductoDao extends JpaRepository<Producto, Long> {
+
+}

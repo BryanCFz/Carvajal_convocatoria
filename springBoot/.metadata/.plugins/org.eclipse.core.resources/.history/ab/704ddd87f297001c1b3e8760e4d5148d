@@ -1,0 +1,23 @@
+package com.bryancfz.wishlist.apirest.models.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.bryancfz.wishlist.apirest.models.dao.IclienteDao;
+import com.bryancfz.wishlist.apirest.models.entity.Cliente;
+
+@Service
+public class ClienteServiceImpl implements IclienteService
+{
+	
+	@Autowired
+	private IclienteDao clienteDao;
+
+	@Override
+	public List<Cliente> findAll_() {
+		return (List<Cliente>)this.clienteDao.findAll();
+	}
+
+}

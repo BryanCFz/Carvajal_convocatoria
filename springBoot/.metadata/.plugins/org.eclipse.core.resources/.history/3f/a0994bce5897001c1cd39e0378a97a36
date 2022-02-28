@@ -1,0 +1,142 @@
+package com.bryancfz.wishlist.apirest.models.entity;
+
+
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
+import java.time.LocalDateTime; 
+
+
+
+/**
+* @author BryanCFz
+*
+*/
+@Entity
+@Table(name = "cliente") //Mapea tabla de BD (application.properties)
+public class Cliente implements Serializable {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Long id;
+	
+	@Column(nullable = false)
+	public String name;
+	
+	@Column(nullable = true)
+	public String lastName;
+	
+	//no nulo, es unico
+	@Column(nullable = false, unique = true)
+	public String email;
+	
+	@Column(name = "create_at")
+	@Temporal(TemporalType.DATE) //->Transformar o equivalente en BD MySQL
+   public java.util.Date createAt;
+	
+	
+	/**
+	 * spring boot java 8 date/time type `java.time.localdatetime` not supported by default: 
+	 * add module \"com.fasterxml.jackson.datatype:jackson-datatype-jsr310\" to enable handling
+	 * 
+	 * https://codingnconcepts.com/spring-boot/jackson-json-request-response-mapping/
+	 * https://stackoverflow.com/questions/61202937/json-parse-error-cannot-deserialize-value-of-type-java-time-localdatetime-fro/61203166#61203166
+	 */
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS][.SS][.S]") //-> [], formato para milisegundos no obligatorios
+	@JsonSerialize(using = LocalDateTimeSerializer.class)     //->Para eliminar de (typeScript o postman) a la DataBase ?
+	@Column(name = "update_at")	
+	public LocalDateTime updateAt;
+	
+	
+	//////////////////////////////////////////////
+	/**
+	 * https://vladmihalcea.com/whats-new-in-jpa-2-2-java-8-date-and-time-types/
+	 * https://www.baeldung.com/java-creating-localdate-with-values
+	 * https://javarevisited.blogspot.com/2017/01/how-to-create-localdatetime-in-java-8.html#axzz7LMeEoHMv
+	 */
+	@PrePersist
+	public void prePersist() {
+		this.createAt = new java.util.Date();
+		updateAt = LocalDateTime.now();
+	}
+	
+	@PreUpdate
+	public void preUpdate() {
+		updateAt = LocalDateTime.now();
+	}
+	////////////////////////////////////////////
+	
+	
+	/* SETTERS AND GETTERS */
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public java.util.Date getCreateAt() {
+		return createAt;
+	}
+
+	public void setCreateAt(java.util.Date createAt) {
+		this.createAt = createAt;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}	
+	
+	public LocalDateTime getUpdateAt() {
+		return updateAt;
+	}
+
+
+	public void setUpdateAt(LocalDateTime updateAt) {
+		this.updateAt = updateAt;
+	}
+
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+}

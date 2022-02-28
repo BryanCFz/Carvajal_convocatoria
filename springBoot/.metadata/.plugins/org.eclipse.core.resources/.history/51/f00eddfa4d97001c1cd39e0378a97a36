@@ -1,0 +1,67 @@
+package com.bryancfz.wishlist.apirest.controllers.dto;
+
+
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class ErrorResponseController {
+
+	private Map<String, Object> hashMapError;
+	private String mensajeError;
+	private Object objError;
+	private int codigoError;
+	
+	
+	public ErrorResponseController() {	
+		this.setHashMapError( new HashMap<String, Object>() );
+		this.initProperties();
+	}
+	
+	private void initProperties() {
+		getHashMapError().put("mensajeError", "<String> cuerpo del mensaje");
+		getHashMapError().put("dataError" , "<Objeto> objeto cualquiera con error o variable primitiva");
+		getHashMapError().put("codigoError" , 404);
+	}
+
+	
+	public void setPropertiesHashMap(String mensaje, Object errorObj, int codigo) {
+		getHashMapError().put("mensajeError", mensaje);
+		getHashMapError().put("dataError" , errorObj);
+		getHashMapError().put("codigoError" , codigo);
+	}
+
+	public Map<String, Object> getHashMapError() {
+		return hashMapError;
+	}
+
+	public void setHashMapError(Map<String, Object> hashMapError) {
+		this.hashMapError = hashMapError;
+	}
+
+	public String getMensajeError() {
+		return mensajeError;
+	}
+
+	public void setMensajeError(String mensajeError) {
+		this.mensajeError = mensajeError;
+	}
+
+	public Object getObjError() {
+		return objError;
+	}
+
+	public void setObjError(Object objError) {
+		this.objError = objError;
+	}
+
+	public int getCodigoError() {
+		return codigoError;
+	}
+
+	public void setCodigoError(int codigoError) {
+		this.codigoError = codigoError;
+	}
+
+	
+}

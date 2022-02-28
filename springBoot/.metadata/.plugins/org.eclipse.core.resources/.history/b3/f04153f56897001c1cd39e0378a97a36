@@ -1,0 +1,43 @@
+package com.bryancfz.wishlist.apirest.models.entity;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+public class HistoricoListaDeseos implements Serializable {
+	
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_lista_deseo")
+	public Long idListaDeseo;
+	
+	@Column(name = "me_gusta", nullable = false)			
+	public Boolean meGusta;
+	
+	@Column(nullable = false)
+	@Temporal(TemporalType.DATE)
+	private java.util.Date fecha;
+	
+	
+	
+
+	@Column(name = "id_cliente", nullable = false)
+	public Long idCliente;
+	
+	@Column(name = "id_producto", nullable = false)
+	public Long idProducto;
+	
+	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+}

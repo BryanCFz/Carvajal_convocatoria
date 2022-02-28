@@ -1,0 +1,5 @@
+package com.bryancfz.wishlist.apirest.dao;
+
+public class IProductoDao {
+
+}

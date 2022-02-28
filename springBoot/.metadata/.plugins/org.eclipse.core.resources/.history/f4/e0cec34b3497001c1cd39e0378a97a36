@@ -1,0 +1,5 @@
+package com.bryancfz.wishlist.apirest.entity;
+
+public class Producto {
+
+}

@@ -1,0 +1,65 @@
+package com.bryancfz.wishlist.apirest.models.entity;
+
+public class Cuenta {
+
+}
+
+
+
+
+package com.bryancfz.wishlist.apirest.models.entity;
+
+
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table; 
+
+
+
+/**
+* @author BryanCFz
+*
+*/
+@Entity
+@Table(name = "cuenta")
+public class Cuenta implements Serializable {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_cliente")
+	public Long id;
+	
+	@Column(nullable = false)
+	public String nombre;
+	
+	
+	//TODO: RELACIONAR CON LA "cuenta"
+	@Column(nullable = false)
+	
+	public String idCuenta;
+	
+	
+	/*Constructors*/
+	
+	
+	public Cuenta() {
+		super();
+	}
+	
+
+	
+	/* SETTERS AND GETTERS */
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+}

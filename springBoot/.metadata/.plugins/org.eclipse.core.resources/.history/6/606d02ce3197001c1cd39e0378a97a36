@@ -1,0 +1,29 @@
+logging.level.org.hibernate.SQL=debug
+
+server.port = 8091
+
+## PostgreSQL
+#spring.datasource.url=jdbc:mysql://localhost/db_springboot_backend?useSSL=false&serverTimezone=UTC
+#spring.datasource.url=jdbc:mysql://localhost/db_springboot_backend?useSSL=false&serverTimezone=America/Bogota
+
+## PostgreSQL
+spring.datasource.url=jdbc:postgresql://localhost:5432/db_wishList_backend
+spring.datasource.username=postgres
+spring.datasource.password=admin
+#spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+
+#spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
+#spring.jpa.hibernate.ddl-auto=create-drop
+
+
+
+## default connection pool
+#spring.datasource.hikari.connectionTimeout=20000
+#spring.datasource.hikari.maximumPoolSize=5
+
+
+
+
+#drop n create table again, good for testing, comment this in production
+#spring.jpa.hibernate.ddl-auto=create

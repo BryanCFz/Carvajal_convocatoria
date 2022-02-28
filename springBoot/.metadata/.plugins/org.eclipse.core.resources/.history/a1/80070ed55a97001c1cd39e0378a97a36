@@ -1,0 +1,64 @@
+package com.bryancfz.wishlist.apirest.models.entity;
+
+
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType; 
+
+
+
+/**
+* @author BryanCFz
+*
+*/
+@Entity
+@Table(name = "cuenta")
+public class Cuenta implements Serializable {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_cuenta")
+	public Long id;
+	
+//	@Column(nullable = false, unique = true)
+	@Column(nullable = false)
+	public String correo;
+	
+	@Column(nullable = false)
+	public String contrasena;	
+	
+	
+	@Column(name = "creado_en")
+	@Temporal(TemporalType.DATE)
+    public java.util.Date creado_en;	
+	
+	
+	
+	
+	
+	/*Constructors*/
+	
+	
+	public Cuenta() {
+		super();
+	}
+	
+
+	
+	/* SETTERS AND GETTERS */
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+}

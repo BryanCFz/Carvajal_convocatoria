@@ -1,0 +1,15 @@
+package com.bryancfz.wishlist.apirest.models.services;
+
+import java.util.List;
+
+import com.bryancfz.wishlist.apirest.models.entity.ListaDeseos;
+
+public class ListaDeseoServiceImpl implements IListaDeseoService{
+
+	@Override
+	public List<ListaDeseos> findAll_() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

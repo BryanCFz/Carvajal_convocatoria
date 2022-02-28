@@ -1,0 +1,94 @@
+package com.bryancfz.wishlist.apirest.models.entity;
+
+
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
+import java.time.LocalDateTime; 
+
+
+
+/**
+* @author BryanCFz
+*
+*/
+@Entity
+@Table(name = "cliente")
+public class Cliente implements Serializable {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_cliente")
+	public Long id;
+	
+	@Column(nullable = false)
+	public String nombre;
+	
+	@Column(nullable = true)
+	public String idCuenta;
+	
+	
+	/*Constructors*/
+	public Cliente(Long id, String nombre, String idCuenta) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.idCuenta = idCuenta;
+	}
+	
+	public Cliente() {
+		super();
+	}
+	
+
+	
+	/* SETTERS AND GETTERS */
+	public Long getId() {
+		return id;
+	}	
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	public String getIdCuenta() {
+		return idCuenta;
+	}
+
+
+	public void setIdCuenta(String idCuenta) {
+		this.idCuenta = idCuenta;
+	}
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+}

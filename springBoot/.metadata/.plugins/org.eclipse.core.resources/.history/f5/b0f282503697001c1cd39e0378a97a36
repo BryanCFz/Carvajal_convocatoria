@@ -1,0 +1,11 @@
+package com.bryancfz.wishlist.apirest.services;
+
+import java.util.List;
+
+import com.bryancfz.wishlist.apirest.entity.Producto;
+
+public interface IProductoService {
+
+	public List<Producto> findAll_();
+	
+}
